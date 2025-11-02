@@ -1,0 +1,42 @@
+#!/bin/bash
+
+# --- Script de Atualização Completa do Kali Linux ---
+
+# Mensagens de início
+echo "================================================="
+echo "Iniciando Atualização Completa do Kali Linux..."
+echo "================================================="
+
+# Passo 1: Atualizar a lista de pacotes
+echo "[PASSO 1/3] Sincronizando lista de pacotes (apt update)..."
+sudo apt-get update
+
+# Verifica se o update falhou (ex: sem internet)
+if [ $? -ne 0 ]; then
+  echo "ERRO: Falha ao executar 'apt update'"
+  exit 1
+fi
+
+echo "-------------------------------------------------"
+echo "[PASSO 2/3] Atualizando o sistema (apt full-upgrade)..."
+echo "-------------------------------------------------"
+
+# Passo 2: O upgrade completo
+# O '-y' responde sim automaticamente
+sudo apt-get full-upgrade -y
+
+if [ $? -ne 0 ]; then
+  echo "ERRO: Falha durante o 'full-upgrade'."
+  exit 1
+fi
+
+echo "-------------------------------------------------"
+echo "[PASSO 3/3] Limpando pacotes órfãos (apt autoremove)..."
+echo "-------------------------------------------------"
+
+# Passo 3: Limpar dependências desnecessárias
+sudo apt-get autoremove -y
+
+echo "================================================="
+echo "  Atualização do Kali Linux concluída! "
+echo "================================================="
