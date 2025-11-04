@@ -1,4 +1,4 @@
-# 🚀 Meus Estudos - HTB Academy Writeups
+# Meus Estudos - HTB Academy Writeups
 
 Este repositório documenta minha jornada e meus *writeups* (anotações) dos módulos da [Hack The Box Academy](https://academy.hackthebox.com/).
 
